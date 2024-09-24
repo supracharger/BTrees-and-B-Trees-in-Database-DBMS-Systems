@@ -7,7 +7,7 @@ Here is my implementation of DBMS B-Trees and B+Trees in python. These two algor
 EXAMPLE VALUES TO BE INDEXED:
 CD29 CD32 CD42 CD44 CD46 CD48 FCC8 FCC16 FCC32 FCC33 FCC37 FCC44 FCC50 FCC51 LE3 LE8 LE11 LE13 LE14 LE19 LE28 LE33 LE36 LE42 LE44 LE51 TT4 TT7 TT17 TT20 TT23 TT27 TT28 TT29 TT33 TT40 TT48
 
-NOTE: I create a 'cypher' as a comparable for the string values above because otherwise it would compare the strings character by character. Additionally, that is not what you want to do. Without the 'cypher' you would get "... A39 A4 A41 ..." when you want "... A4 A39 A41 ..."""
+NOTE: I created a 'cypher' as a comparable for the string values above because otherwise it would compare the strings character by character. Additionally, that is not what you want to do. Without the 'cypher' you would get "... A39 A4 A41 ..." when you want "... A4 A39 A41 ..."""
 
 
 
@@ -15,7 +15,7 @@ NOTE: I create a 'cypher' as a comparable for the string values above because ot
 
 The target fill factor is two-thirds for each node in the tree. This way when records are added or deleted into the database the B-Tree index is created less often and not every time a record is added or deleted.
 
-EXAMPLE IMPLEMENTATION =========================================
+### EXAMPLE IMPLEMENTATION
 ```
 from BTree import *
 
@@ -48,9 +48,9 @@ Display(root, jobId, find, "ALGORITHM", cypher)
 ```
 
 
-### B-Tree Multiple Examples Output:
+## B-Tree Multiple Examples Output:
 
-ALGORITHM: ....................................................
+### ALGORITHM:
 Filled 66%, Nodes#: 14, Levels: 2
 
 Tree Indexs:
@@ -73,7 +73,7 @@ CD29_CD32_CD42    CD46_CD48_FCC8    FCC32_FCC33_FCC37    FCC50_FCC51_LE3  |  LE1
 
 
 
-PRE-MADE BEST: ................................................
+### PRE-MADE BEST:
 Filled 66%, Nodes#: 14, Levels: 2
 
 Tree Indexs:
@@ -96,7 +96,7 @@ CD29_CD32_CD42    CD46_CD48_FCC8    FCC32_FCC33_FCC37    FCC50_FCC51_LE3  |  LE1
 
 
 
-PRE-MADE 2: ...................................................
+### PRE-MADE 2:
 Filled 54%, Nodes#: 17, Levels: 2
 
 Tree Indexs:
@@ -120,9 +120,9 @@ CD29_CD32_CD42    CD46_CD48_FCC8    FCC32_FCC33    FCC44_FCC50  |  LE3_LE8    LE
 
 ## B+Tree Example & Output:
 
-In B+Trees the address to the block record is only found in the leaf's of the tree. The target fill factor is 50% for each node in the tree. This way when records are added or deleted into the database the B+Tree index is created less often and not every time a record is added or deleted.
+In B+Trees the address to the block record is only found in the leaves of the tree. The target fill factor is 50% for each node in the tree. This way when records are added or deleted into the database the B+Tree index is created less often and not every time a record is added or deleted.
 
-EXAMPLE IMPLEMENTATION =========================================
+### EXAMPLE IMPLEMENTATION
 ```
 from BPlusTree import *
 from BTree import SpecialStrSort
@@ -158,9 +158,9 @@ Display(root, jobId, find, "ALGORITHM FACTOR= 50%", cypher)
 ```
 
 
-### B+Tree Multiple Examples Output:
+## B+Tree Multiple Examples Output:
 
-ALGORITHM BEST FACTOR= 7/12: ..................................
+### ALGORITHM BEST FACTOR= 7/12:
 Filled 51%, Nodes#: 24, Levels: 2
 
 Tree Indexs:
@@ -183,7 +183,7 @@ CD29_CD32    CD42_CD44    CD46_CD48    FCC8_FCC16    FCC32_FCC33  |  FCC37_FCC44
 
 
 
-ALGORITHM FACTOR= 50%: ........................................
+### ALGORITHM FACTOR= 50%: 
 Filled 45%, Nodes#: 27, Levels: 3
 
 Tree Indexs:
