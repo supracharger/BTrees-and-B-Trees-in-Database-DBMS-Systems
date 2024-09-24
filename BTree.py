@@ -458,7 +458,7 @@ def Display(root, values, find, title, cypher=None):
     print('%s: %s' % (title, line[len(title):]))
     pct, nNodes, lvls = BTree.Stats(root)
     print('Filled %.0f%%, Nodes#: %d, Levels: %d' % (pct, nNodes, lvls))
-    print('Tree Indexs:')
+    print('Tree Indexes:')
     BTree.PrettyPrintTree(root)
     BTree.FillValues(values, root, cypher)
     for f in find:

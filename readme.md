@@ -53,7 +53,7 @@ Display(root, jobId, find, "ALGORITHM", cypher)
 ### ALGORITHM:
 Filled 66%, Nodes#: 14, Levels: 2
 
-Tree Indexs:
+Tree Indexes:
 15_27
 
 3_7_11    19_23    31_34
@@ -76,7 +76,7 @@ CD29_CD32_CD42    CD46_CD48_FCC8    FCC32_FCC33_FCC37    FCC50_FCC51_LE3  |  LE1
 ### PRE-MADE BEST:
 Filled 66%, Nodes#: 14, Levels: 2
 
-Tree Indexs:
+Tree Indexes:
 15_27
 
 3_7_11    19_23    31_34
@@ -99,7 +99,7 @@ CD29_CD32_CD42    CD46_CD48_FCC8    FCC32_FCC33_FCC37    FCC50_FCC51_LE3  |  LE1
 ### PRE-MADE 2:
 Filled 54%, Nodes#: 17, Levels: 2
 
-Tree Indexs:
+Tree Indexes:
 13_22_31
 
 3_7_10    16_19    25_28    34
@@ -163,7 +163,7 @@ Display(root, jobId, find, "ALGORITHM FACTOR= 50%", cypher)
 ### ALGORITHM BEST FACTOR= 7/12:
 Filled 51%, Nodes#: 24, Levels: 2
 
-Tree Indexs:
+Tree Indexes:
 9_19_29
 
 1_3_5_7    11_13_15_17    21_23_25_27    31_33_35
@@ -186,7 +186,7 @@ CD29_CD32    CD42_CD44    CD46_CD48    FCC8_FCC16    FCC32_FCC33  |  FCC37_FCC44
 ### ALGORITHM FACTOR= 50%: 
 Filled 45%, Nodes#: 27, Levels: 3
 
-Tree Indexs:
+Tree Indexes:
 23
 
 7_15    31
