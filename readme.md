@@ -2,6 +2,8 @@
 
 Here is my implementation of DBMS B-Trees and B+Trees in python. These two algorithms are used to index a database for fast retrieval of common searches. Feel free to take a look!
 
+![B Trees in Python](/img/btreepython.png)
+
 EXAMPLE VALUES TO BE INDEXED:
 CD29 CD32 CD42 CD44 CD46 CD48 FCC8 FCC16 FCC32 FCC33 FCC37 FCC44 FCC50 FCC51 LE3 LE8 LE11 LE13 LE14 LE19 LE28 LE33 LE36 LE42 LE44 LE51 TT4 TT7 TT17 TT20 TT23 TT27 TT28 TT29 TT33 TT40 TT48
 
