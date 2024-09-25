@@ -6,22 +6,25 @@ class BTree:
     'values': values to be inputted into the tree. Does NOT need to be unique values.
     'p': "p" node size. Max size of values in each node.
     'fillFactor': (Optional) Default 2/3. The max fill size of every node in the tree.
+    'startLevel': (Optional) The minimum level it starts building from. If tree is too small
+                    it will add levels until it is the right size.
     RETURN: root node of tree.
     """
     @staticmethod
-    def Create(values, p, fillFactor=2/3):
+    def Create(values, p, fillFactor=2/3, startLevel=1):
+        assert startLevel >= 1
         n = len(set(values))
         values = list(range(n))
         # values = sorted(list(set(values))) # Sort will mess up: FCC8 FCC32 FCC33
-        maxlvl = 1
+        maxlvl = startLevel
+        root = Block(p=p, factor=fillFactor)
+        BTree._CreateNodes(root, maxlvl)
         while True:
-            # try: Not the most efficient solution, but for the sake of time, it works.
             try:
-                root = Block(p=p, factor=fillFactor)
-                BTree._CreateNodes(root, maxlvl)
                 BTree._TrimNodes(n, root)
                 break
             except TooSmall:
+                BTree._AddLayer(root, maxlvl)
                 maxlvl += 1
         BTree.FillValues(values, root)
         assert BTree._ValidateIndexs(root)
@@ -40,6 +43,39 @@ class BTree:
         n = nodes[-1]
         n._right = block.NewBlock(n, nextLast)
         BTree._CreateNodes(n._right, maxlvl, lvl+1)
+
+    @staticmethod
+    def _AddLayer(root, prevLevel, redoLastLyr=False):
+        def Grow(block, isleft):
+            if redoLastLyr:
+                newblk = block._parent._block.NewBlock(block._parent, False)
+                if isleft:
+                    block._parent._left = newblk
+                else:
+                    block._parent._right = newblk
+                while not newblk.IsValid():
+                    newblk.Add(-1)  
+                block = newblk
+            nodes = block.Nodes()
+            nodes = nodes + [nodes[-1]]
+            for i,n in enumerate(nodes):
+                newblk = block.NewBlock(n, True)
+                if i < len(nodes)-1:
+                    n._left = newblk
+                else:
+                    n._right = newblk
+                while not newblk.IsValid():
+                    newblk.Add(-1)
+        def InOrder(block, maxLvl, lvl=0, isleft=None):
+            if block==None: return
+            elif lvl == maxLvl:
+                Grow(block, isleft)
+                return
+            for n in block.Nodes():
+                InOrder(n._left, maxLvl, lvl+1, True)
+                InOrder(n._right, maxLvl, lvl+1, False)
+        # Grow Layer
+        InOrder(root, prevLevel)
 
     @staticmethod
     def FillValues(values, root, cypher=None, strict=True):

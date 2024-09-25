@@ -7,20 +7,23 @@ class BPlusTree:
     'p': "p" internal node size. Max size of values in each internal node.
     'p2': "p" leaf node size. Max size of the values in each leaf node.
     'factor': (Optional) Default 50%. The max fill percent of every node in the tree.
+    'startLevel': (Optional) The minimum level it starts building from. If tree is too small
+                    it will add levels until it is the right size.
     RETURN: root node of tree.
     """
     @staticmethod
-    def Create(values, p, p2, factor=0.50):
+    def Create(values, p, p2, factor=0.50, startLevel=1):
+        assert startLevel >= 1
         n = len(set(values))
-        maxlvl = 1
+        maxlvl = startLevel
+        root = PlusBlock(p, p2, factor)
+        BTree._CreateNodes(root, maxlvl)
         while True:
-            # try: Not the most efficient solution, but for the sake of time, it works.
             try:
-                root = PlusBlock(p, p2, factor)
-                BTree._CreateNodes(root, maxlvl)
                 BTree._TrimNodes(n, root, plus=True)
                 break
             except TooSmall:
+                BTree._AddLayer(root, maxlvl, redoLastLyr=p!=p2)
                 maxlvl += 1
         BPlusTree._IndexValues(n, root)
         assert BPlusTree._ValidateIndexs(root)
@@ -68,22 +71,26 @@ class BPlusTree:
 
     @staticmethod
     def FillValues(values, root, cypher=None):
-        def InOrder(node, ptr, levels, lvl=0):
+        def InOrderLvl(node, ptr, levels, lvl=0):
             if node._left!=None:
                 for n in node._left.Nodes():
-                    InOrder(n, ptr, levels, lvl+1)
+                    InOrderLvl(n, ptr, levels, lvl+1)
             ptr.append(node)
             levels.append(lvl)
             if node._right!=None:
                 for n in node._right.Nodes():
-                    InOrder(n, ptr, levels, lvl+1)
+                    InOrderLvl(n, ptr, levels, lvl+1)
         if cypher==None:
             cypher = lambda v: v
+        alreadyFilled = False
+        try: alreadyFilled = root._alreadyFilled
+        except: root._alreadyFilled = True
+        assert not alreadyFilled, 'Values have already been filled. Values will NOT be right. Please recreate Tree using BPlusTree.Create().'
         values = list(sorted(set(values), key=cypher))
         found = [False] * len(values)
         ptr, levels = [], []
         for n in root.Nodes():
-            InOrder(n, ptr, levels)
+            InOrderLvl(n, ptr, levels)
         maxlvl = max(levels)
         for n,lvl in zip(ptr, levels):
             v = n._value
