@@ -12,10 +12,10 @@ class BPlusTree:
     RETURN: root node of tree.
     """
     @staticmethod
-    def Create(values, p, p2, factor=0.50, startLevel=1):
-        assert startLevel >= 1
+    def Create(values, p, p2, factor=0.50, startLevel=2):
+        assert startLevel >= 2
         n = len(set(values))
-        maxlvl = startLevel
+        maxlvl = startLevel-1
         root = PlusBlock(p, p2, factor)
         BTree._CreateNodes(root, maxlvl)
         while True:

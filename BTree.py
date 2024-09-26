@@ -11,12 +11,12 @@ class BTree:
     RETURN: root node of tree.
     """
     @staticmethod
-    def Create(values, p, fillFactor=2/3, startLevel=1):
-        assert startLevel >= 1
+    def Create(values, p, fillFactor=2/3, startLevel=2):
+        assert startLevel >= 2
         n = len(set(values))
         values = list(range(n))
         # values = sorted(list(set(values))) # Sort will mess up: FCC8 FCC32 FCC33
-        maxlvl = startLevel
+        maxlvl = startLevel-1
         root = Block(p=p, factor=fillFactor)
         BTree._CreateNodes(root, maxlvl)
         while True:
