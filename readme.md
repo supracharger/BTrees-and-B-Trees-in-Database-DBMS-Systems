@@ -51,7 +51,7 @@ Display(root, jobId, find, "ALGORITHM", cypher)
 ## B-Tree Multiple Examples Output:
 
 ### ALGORITHM:
-Filled 66%, Nodes#: 14, Levels: 2
+Filled 66%, Nodes#: 14, Levels: 3
 
 Tree Indexes:
 15_27
@@ -74,7 +74,7 @@ CD29_CD32_CD42    CD46_CD48_FCC8    FCC32_FCC33_FCC37    FCC50_FCC51_LE3  |  LE1
 
 
 ### PRE-MADE BEST:
-Filled 66%, Nodes#: 14, Levels: 2
+Filled 66%, Nodes#: 14, Levels: 3
 
 Tree Indexes:
 15_27
@@ -97,7 +97,7 @@ CD29_CD32_CD42    CD46_CD48_FCC8    FCC32_FCC33_FCC37    FCC50_FCC51_LE3  |  LE1
 
 
 ### PRE-MADE 2:
-Filled 54%, Nodes#: 17, Levels: 2
+Filled 54%, Nodes#: 17, Levels: 3
 
 Tree Indexes:
 13_22_31
@@ -161,7 +161,7 @@ Display(root, jobId, find, "ALGORITHM FACTOR= 50%", cypher)
 ## B+Tree Multiple Examples Output:
 
 ### ALGORITHM BEST FACTOR= 7/12:
-Filled 51%, Nodes#: 24, Levels: 2
+Filled 51%, Nodes#: 24, Levels: 3
 
 Tree Indexes:
 9_19_29
@@ -184,7 +184,7 @@ CD29_CD32    CD42_CD44    CD46_CD48    FCC8_FCC16    FCC32_FCC33  |  FCC37_FCC44
 
 
 ### ALGORITHM FACTOR= 50%: 
-Filled 45%, Nodes#: 27, Levels: 3
+Filled 45%, Nodes#: 27, Levels: 4
 
 Tree Indexes:
 23

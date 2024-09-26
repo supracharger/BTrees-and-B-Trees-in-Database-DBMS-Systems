@@ -282,7 +282,7 @@ class BTree:
                 mxlvl = FilledBlocks(n._right, ls, lvl+1)
             return mxlvl
         filled = []
-        lvl = FilledBlocks(root, filled)
+        lvl = FilledBlocks(root, filled) + 1
         pct = np.array(filled).mean() * 100
         return pct, len(filled), lvl
     
